@@ -1,7 +1,7 @@
 # Paranoid-Bikers
 
 We are a team of CPSC 310 students:
-- Christian Gheorghe, 
+- Christina Gheorghe, 
 - Derek Burandt
 - Jolene Wong
 - Michael Zhang
