@@ -1,3 +1,7 @@
 This is a text file with no real purpose.
 
+<<<<<<< HEAD
 I am mike, hear me roar.
+=======
+-Derek is testing a change to this text file.
+>>>>>>> origin/master
