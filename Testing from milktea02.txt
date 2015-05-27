@@ -1,12 +1,1 @@
-This is a text file with no real purpose.
-
-I am mike, hear me roar.
-
-This is a text file with no real purpose.
-
-
-Random edit...
-
-I also make a random edit.
-
-
+Yay, we did it!
