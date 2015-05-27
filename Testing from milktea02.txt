@@ -1,3 +1,7 @@
+<<<<<<< HEAD
 This is a text file with no real purpose.
 
 I am mike, hear me roar.
+=======
+This is a text file with no real purpose.
+>>>>>>> parent of 8170e6d... Derek Testing a Commit
