@@ -9,7 +9,7 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map'),
       mapOptions);
 
-	var image = 'images/teemo.png';
+	var image = 'static/images/teemo.png'
   var marker = new google.maps.Marker({
 	draggable: false,
       position: myLatlng,

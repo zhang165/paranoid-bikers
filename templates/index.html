@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+		<script src="{% static 'googlemap.js' %}"></script>
+		
+		<div class="login">
+		{% block body %}
+		{% load socialaccount %}
+		{% if user.is_authenticated %}
+			<a href="{% url 'account_logout' %}">Sign Out</a>
+		{% else %}
+			<a href="{% url 'account_login' %}">Sign In</a><br>
+			<a href="{% url 'account_signup' %}">Sign Up</a><br>
+			<a href="{% provider_login_url "google" %}">Sign in with Google</a>
+		{% endif %}
+		{% endblock %}
+		</div>
+		
+	</head>
+	
+	<body bgcolor="#11bc78">
+		<table height="100%" width="100%" border="0">
+		<tr>
+		<td align="left" valign="center">
+		<img src="{% static 'images/banner.jpg' %}">
+		</td>
+		</tr>
+		  <tr>
+			<td valign="top" align="center">
+		 <div id="map"></div>
+		  </td>
+		  </tr>
+		</table>
+		
+	</body>
+	
+</html>
