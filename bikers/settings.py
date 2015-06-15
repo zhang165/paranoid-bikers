@@ -49,11 +49,11 @@ INSTALLED_APPS = (
     'parkingApp',
 	
 	'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    #'allauth',
+    #'allauth.account',
+    #'allauth.socialaccount',
 	#'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.google',
+    #'allauth.socialaccount.providers.google',
 )
 
 MIDDLEWARE_CLASSES = (
