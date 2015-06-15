@@ -16,13 +16,13 @@ ALLOWED_HOSTS = []
 
 # <django allauth>
 
-#AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth`
-#    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
     # `allauth` specific authentication methods, such as login by e-mail
-#    'allauth.account.auth_backends.AuthenticationBackend',
-#)
-"""
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
@@ -37,7 +37,7 @@ SOCIALACCOUNT_PROVIDERS = {
 SITE_ID = 2
 
 # </django allauth>
-"""
+
 
 
 INSTALLED_APPS = (
@@ -50,11 +50,11 @@ INSTALLED_APPS = (
     'parkingApp',
 	
 	'django.contrib.sites',
-    #'allauth',
-    #'allauth.account',
-    #'allauth.socialaccount',
-	#'allauth.socialaccount.providers.facebook',
-    #'allauth.socialaccount.providers.google',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+	'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -99,12 +99,12 @@ WSGI_APPLICATION = 'bikers.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-#DATABASE_PATH = os.path.join(PROJECT_PATH, 'test.db')
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'test.db'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
