@@ -2,7 +2,6 @@ import xml.etree.ElementTree as ET
 import urllib.request
 from zipfile import ZipFile
 
-
 def createXML(kml, filename):
 	root = ET.Element("Document")
 	comment = ET.Comment("Prepared for ParanoidBikers")
@@ -31,6 +30,26 @@ def createXML(kml, filename):
 	tree = ET.ElementTree(root)
 	with open(filename, "wb") as fh:
 		tree.write(fh)
+
+def toKML(url):
+	kmz_path = url
+	urllib.request.urlretrieve(kmz_path, 'kmz_file.kmz')
+	kmz_file = ZipFile('kmz_file.kmz')
+	kml_file = kmlz_file.extract('motorcyle_parking.kml')
+	kmz_file.close()
+
+def getRoot(kmlFilename):
+	tree = ET.parse(kmlFilename)
+	root = tree.getroot()
+	folder = root[0][3]
+	return folder
+
+
+def parser(url, kmlFilename, filename):
+	toKML(url)
+	kmlFilename = 'motorcycle_parking.kml'
+	kml = getRoot(kmlFilename)
+	createXML(kml, filename)
 
 if __name__ == '__main__':
 	# The path to our kmz file
