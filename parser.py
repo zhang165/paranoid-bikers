@@ -3,9 +3,7 @@ import os
 import xml.etree.ElementTree as ET
 import urllib.request
 from zipfile import ZipFile
-
-from models import Placemark
-
+from decimal import *
 def createXML(kml, filename):
 	'''
 	String, String -> None
@@ -56,16 +54,16 @@ def createXML(kml, filename):
 		lon_dec = Decimal(lon_text)
 
 		# create a Placemark object in the database
-		p = Placemark.objects.get_or_create(id = placemark_id_text, 
-											name = name_text,
-											description = description_text,
-											lat = lat_dec,
-											lon = lon_dec)
-		p.save()
+		add_placemark(placemark_id = placemark_id_text, 
+						name = name_text,
+						description = description_text,
+						lat = lat_dec,
+						lon = lon_dec)
 
 	tree = ET.ElementTree(root)
 	with open(filename, "wb") as fh:
 		tree.write(fh)
+
 
 def toKML(url):
 	'''
@@ -92,7 +90,18 @@ def parser(url, kmlFilename, xmlfilename):
 	kml = getRoot(kmlFilename)
 	createXML(kml, xmlfilename)
 
+def add_placemark(placemark_id, name, description, lat=1, lon=2):
+    p = Placemark.objects.get_or_create(placemark_id = placemark_id, 
+    	name = name, 
+    	description = description, 
+    	lat = lat, 
+    	lon = lon)[0]
+    return p
+
 if __name__ == '__main__':
+	os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bikers.settings')
+	from parkingApp.models import Placemark
+	print("parsing and populating for parkingApp")
 	# The path to our kmz file
 	KMZ_PATH = 'http://data.vancouver.ca/download/kml/motorcycle_parking.kmz'
 	# Retrieve the file and save it locally
