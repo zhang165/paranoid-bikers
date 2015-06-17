@@ -39,6 +39,7 @@ SITE_ID = 2
 # </django allauth>
 
 
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,7 +53,7 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-	#'allauth.socialaccount.providers.facebook',
+	'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
 )
 
@@ -97,6 +98,8 @@ WSGI_APPLICATION = 'bikers.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+
+
 
 DATABASES = {
     'default': {

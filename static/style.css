@@ -1,11 +1,12 @@
 html, body, #map {
         height: 480px;
-		width: 100%;
+	width: 100%;
         margin: 0px;
-        padding: 0px;
-}
+        padding: 0px
+      }
 
-.login {
-	position: relative;
-	float: right;
+.content{
+font: 15px arial, sans-serif;
+color: #FFFFFF;
+font-size: 12px;
 }
