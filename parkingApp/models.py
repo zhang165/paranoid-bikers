@@ -8,3 +8,5 @@ class Placemark(models.Model):
 	description = models.CharField(max_length=300)
 	lat = models.DecimalField(max_digits=20, decimal_places=14)
 	lon = models.DecimalField(max_digits=20, decimal_places=14)
+	def __str__(self):
+		return self.placemark_id

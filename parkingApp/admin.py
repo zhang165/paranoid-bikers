@@ -3,4 +3,9 @@ from .models import Placemark
 
 # Register your models here.
 
-admin.site.register(Placemark)
+class PlacemarkAdmin(admin.ModelAdmin):
+	list_display = ('placemark_id', 'name')
+
+
+
+admin.site.register(Placemark, PlacemarkAdmin)
