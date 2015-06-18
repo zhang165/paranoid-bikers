@@ -1,50 +1,40 @@
-
 html, body, #map {
         height: 480px;
-		width: 100%;
+	width: 100%;
         margin: 0px;
-        padding: 0px;
-		font: 14px Verdana, sans-serif;
-		font-weight: bold;
-}
+        padding: 0px
 
-.content {
+      }
+body {
+	background-color: #c8c8c8;
+}      
+
+.content{
 font: 15px arial, sans-serif;
 color: #FFFFFF;
 font-size: 12px;
 }
 
-a:hover, a:visited, a:link, a:active {
-    text-decoration: none;
-	color: #ffffff;
+a:link{
+	font: 15px arial, sans-serif;
+	color: #48281c;
+	text-decoration: none;
+	font-weight: bold;
 }
-
-#login {
-	display: inline;
-	position: relative;
-	float: right;
-	margin-top: 20px;
+a:visited{
+	font: 15px arial, sans-serif;
+	color: #48281c;
+	text-decoration: none;
+	font-weight: bold;
 }
-
-#banner {
-	display: inline;
+a:active{
+	font: 15px arial, sans-serif;
+	color: #48281c;
+	text-decoration: none;
+	font-weight: bold;
 }
-
-.btn {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  display: inline;
-  border-radius: 28px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 15px;
-  background: #5b6266;
-  padding: 7px 14px 7px 14px;
-  text-decoration: none;
-  margin-right: 10px;
-}
-
-.btn:hover {
-  background: #94a0a8;
-  text-decoration: none;
-}
+a:hover{
+	font: 15px arial, sans-serif;
+	color: #5b5b5b;
+	text-decoration: none;
+	font-weight: bold;

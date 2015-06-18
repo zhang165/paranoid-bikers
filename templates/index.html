@@ -5,31 +5,82 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-		<script src="{% static 'googlemap.js' %}"></script>
-		<div id="banner"><img src="{% static 'images/banner.jpg' %}"></div>
-		<div id="login">
-			{% block body %}
-			{% load socialaccount %}
-			{% if user.is_authenticated %}
-				<div class="btn"><a href="{% url 'account_logout' %}">Sign Out</a></div>
-			{% else %}
-				<div class="btn"><a href="{% url 'account_login' %}">Sign In</a></div>
-				<div class="btn"><a href="{% url 'account_signup' %}">Sign Up</a></div>
-				<div class="btn"><a href="{% provider_login_url "google" %}">Google</a></div>
-				<div class="btn"><a href="{% provider_login_url "facebook" method="oauth2" %}">Facebook</a></div>
-			{% endif %}
-			{% endblock %}
-		</div>
-		</div>
-		
+		<script type="text/javascript">
+
+var myLatlng = new google.maps.LatLng(49.255, -123.121);
+
+function initialize() {
+  var mapOptions = {
+    zoom: 12,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+  };
+
+var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+var icon = "{% static 'images/parking.png' %}";
+//var data = 'http://data.vancouver.ca/download/kml/motorcycle_parking.kmz';
+
+{% for m in markers %}
+var point = new google.maps.LatLng({{m.lon}}, {{m.lat}});
+            var marker = new google.maps.Marker({
+            position: point,
+            map: map,
+            icon: icon,
+            clickable: true,
+            draggable: false,
+        });
+
+marker.info = new google.maps.InfoWindow({
+});
+
+google.maps.event.addListener(marker, 'click', function() {
+  marker.info.setContent(
+  	'<b><p>Parking Location</p></b>'+
+  	'<p>{{m.rate}}<br>'+
+  	'{{m.credit_card}}<br>'+
+  	'{{m.location}}<br>'+
+  	'{{m.intersection}}<br></p>'+
+  	'<img src="{% static 'images/buildings.jpg' %}">')
+  marker.info.open(map, this);
+});
+
+{% endfor %}
+// var kmlLayer = new google.maps.KmlLayer({
+// 	url: data,
+// 	map: map,
+// 	suppressInfoWindows: false,
+//   });
+  }
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+
 	</head>
 	
-	<body bgcolor="#11bc78">
+	<body>
 		<table height="100%" width="100%" border="0">
 		<tr>
+		<td align="left" valign="center">
+		<img src="{% static 'images/banner.png' %}">
+		</td>
+		<td alight="right" valign="center">
+			<div class="login">
+		{% block body %}
+		{% load socialaccount %}
+		{% if user.is_authenticated %}
+			<a href="{% url 'account_logout' %}">Sign Out</a>
+		{% else %}
+			<a href="{% url 'account_login' %}">Sign In</a><br>
+			<a href="{% url 'account_signup' %}">Sign Up</a><br>
+			<a href="{% provider_login_url "google" %}">Sign in with Google</a><br>
+			<a href="{% provider_login_url "facebook" method="oauth2" %}">Sign in with Facebook</a>
+		{% endif %}
+		{% endblock %}
+		</div>
+	</td>
 		</tr>
 		  <tr>
-			<td valign="top" align="center">
+			<td valign="top" align="center"  colspan = "2">
 		 <div id="map"></div>
 		  </td>
 		  </tr>

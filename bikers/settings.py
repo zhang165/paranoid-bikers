@@ -34,7 +34,7 @@ SOCIALACCOUNT_PROVIDERS = {
           'AUTH_PARAMS': { 'access_type': 'online' } 
 	}
 }
-SITE_ID = 2
+SITE_ID = 3
 
 # </django allauth>
 
