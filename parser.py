@@ -32,7 +32,13 @@ def createXML(kml, filename):
 		# add description to Placemark
 		description = ET.SubElement(placemark, "description")
 		description_text = kml[i][1].text
-		description.text = description.text
+		description_list = description_text.split("<br>")
+		joiner = "<br>"
+		description_text = joiner
+		for desc in description_list[3:8]:
+			description_text += desc + joiner
+		description_text += description_list[10] + joiner
+		description.text = description_text
 
 
 		# add a Point to Placemark
