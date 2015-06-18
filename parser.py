@@ -100,7 +100,7 @@ def add_placemark(placemark_id, name, description, lat=1, lon=2):
 
 if __name__ == '__main__':
 	os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bikers.settings')
-	
+	# creates a 'parkingData' directory if one does not exist
 	if  not (os.path.exists('parkingData')):
 		os.mkdir('parkingData')
 	from parkingApp.models import Placemark
