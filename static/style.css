@@ -1,11 +1,44 @@
+
 html, body, #map {
         height: 480px;
 		width: 100%;
         margin: 0px;
         padding: 0px;
+		font: 14px Verdana, sans-serif;
+		font-weight: bold;
 }
 
-.login {
+a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+	color: #ffffff;
+}
+
+#login {
+	display: inline;
 	position: relative;
 	float: right;
+	margin-top: 20px;
+}
+
+#banner {
+	display: inline;
+}
+
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  display: inline;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  background: #5b6266;
+  padding: 7px 14px 7px 14px;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.btn:hover {
+  background: #94a0a8;
+  text-decoration: none;
 }

@@ -27,12 +27,12 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
 LOGIN_REDIRECT_URL = '/'
-SOCIALACCOUNT_QUERY_EMAIL = True
+
 SOCIALACCOUNT_PROVIDERS = { 
 	'google': { 
 		'SCOPE': ['profile', 'email'],
           'AUTH_PARAMS': { 'access_type': 'online' } 
-	}	
+	}
 }
 SITE_ID = 2
 
@@ -52,7 +52,7 @@ INSTALLED_APPS = (
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-	#'allauth.socialaccount.providers.facebook',
+	'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
 )
 
