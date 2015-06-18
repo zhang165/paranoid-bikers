@@ -39,8 +39,8 @@ google.maps.event.addListener(marker, 'click', function() {
   	'<p>{{m.rate}}<br>'+
   	'{{m.credit_card}}<br>'+
   	'{{m.location}}<br>'+
-  	'{{m.intersection}}<br></p>'+
-  	'<img src="{% static 'images/buildings.jpg' %}">')
+  	'{{m.intersection}}'+
+  	'<br></p><img src="{% static 'images/buildings.jpg' %}">')
   marker.info.open(map, this);
 });
 
