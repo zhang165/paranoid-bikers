@@ -32,8 +32,8 @@ def createXML(kml, filename):
 		# add description to Placemark
 		description = ET.SubElement(placemark, "description")
 		description_text = kml[i][1].text
-		description_list = description_text.split("<br>")
 		joiner = "<br>"
+		description_list = description_text.split(joiner)
 		description_text = joiner
 		for desc in description_list[3:8]:
 			description_text += desc + joiner
@@ -62,7 +62,13 @@ def createXML(kml, filename):
 		# create a Placemark object in the database
 		add_placemark(placemark_id = placemark_id_text, 
 						name = name_text,
-						description = description_text,
+						#description = description_text,
+						rate = description_list[3],
+						credit_card = description_list[4],
+						location = description_list[5],
+						intersection = description_list[6],
+						time = description_list[7],
+						link = description_list[10],
 						lat = lat_dec,
 						lon = lon_dec)
 
@@ -96,10 +102,16 @@ def parser(url, kmlFilename, xmlfilename):
 	kml = getRoot(kmlFilename)
 	createXML(kml, xmlfilename)
 
-def add_placemark(placemark_id, name, description, lat=1, lon=2):
+def add_placemark(placemark_id, name, rate, credit_card, location, intersection,
+time, link, lat=1, lon=2):
     p = Placemark.objects.get_or_create(placemark_id = placemark_id, 
     	name = name, 
-    	description = description, 
+    	rate = rate, 
+    	credit_card = credit_card,
+    	location = location,
+    	intersection = intersection,
+    	time = time,
+    	link = link,
     	lat = lat, 
     	lon = lon)[0]
     return p
