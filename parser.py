@@ -72,9 +72,9 @@ def toKML(url):
 	takes url of kmz file and unzips it and extracts the kml file
 	'''
 	kmz_path = url
-	urllib.request.urlretrieve(kmz_path, 'kmz_file.kmz')
-	kmz_file = ZipFile('kmz_file.kmz')
-	kml_file = kmz_file.extract('motorcycle_parking.kml')
+	urllib.request.urlretrieve(kmz_path, 'parkingData/kmz_file.kmz')
+	kmz_file = ZipFile('parkingData/kmz_file.kmz')
+	kml_file = kmz_file.extract('motorcycle_parking.kml', 'parkingData')
 	kmz_file.close()
 
 def getRoot(kmlFilename):
@@ -86,7 +86,7 @@ def getRoot(kmlFilename):
 
 def parser(url, kmlFilename, xmlfilename):
 	toKML(url)
-	kmlFilename = 'motorcycle_parking.kml'
+	kmlFilename = 'parkingData/motorcycle_parking.kml'
 	kml = getRoot(kmlFilename)
 	createXML(kml, xmlfilename)
 
@@ -100,6 +100,9 @@ def add_placemark(placemark_id, name, description, lat=1, lon=2):
 
 if __name__ == '__main__':
 	os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bikers.settings')
+	
+	if  not (os.path.exists('parkingData')):
+		os.mkdir('parkingData')
 	from parkingApp.models import Placemark
 	print("parsing and populating for parkingApp")
 	# The path to our kmz file
@@ -117,8 +120,8 @@ if __name__ == '__main__':
 	#root = tree.getroot()
 	#folder = root[0][3]
 
-	xmlfilename = "motorcycle_parking.xml"
-	kmlfilename = 'motorcycle_parking.kml'
+	xmlfilename = "parkingData/motorcycle_parking.xml"
+	kmlfilename = "parkingData/motorcycle_parking.kml"
 	# createXML(folder, xmlfilename)
 	parser(KMZ_PATH, kmlfilename, xmlfilename)
 	
