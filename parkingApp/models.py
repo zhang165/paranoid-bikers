@@ -6,7 +6,7 @@ class Placemark(models.Model):
 	placemark_id = models.CharField(max_length=30)
 	name = models.CharField(max_length=50)
 	#description = models.CharField(max_length=300)
-	rate = models.CharField(max_length=300)
+	rate = models.CharField(max_length=300, default = "")
 	credit_card = models.CharField(max_length=300, default = "")
 	location = models.CharField(max_length=300, default = "")
 	intersection = models.CharField(max_length=300, default = "")

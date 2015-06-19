@@ -13,7 +13,7 @@ SECRET_KEY = 'qejki2%2q==3_v%4*5qt%wv$_$etp@jkp&k5r_#e@hcn#w-(!6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 # <django allauth>
 
@@ -105,10 +105,16 @@ WSGI_APPLICATION = 'bikers.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mydb',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'PORT': '',
+        'HOST': 'localhost',
+        }
     }
-}
 
 
 # Internationalization
@@ -124,16 +130,17 @@ USE_L10N = True
 
 USE_TZ = True
 
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
+# Parse database configuration from $DATABASE_URL
+# DATABASES['default'] = dj_database_url.config()
 
-# make sure to change below when in production:
-STATIC_URL = '/static/'
+# Enable Connection Pooling (if desired)
+# DATABASES['default']['ENGINE'] = 'django_postgrespool'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
-)
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
