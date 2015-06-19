@@ -9,15 +9,32 @@
 
 var myLatlng = new google.maps.LatLng(49.255, -123.121);
 
+
 function initialize() {
+
+var styleArray = [{"featureType":"water","elementType":"all","stylers":[{"hue":"#7fc8ed"},{"saturation":55},{"lightness":-6},{"visibility":"on"}]},{"featureType":"water","elementType":"labels","stylers":[{"hue":"#7fc8ed"},{"saturation":55},{"lightness":-6},{"visibility":"off"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"hue":"#83cead"},{"saturation":1},{"lightness":-15},{"visibility":"on"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"hue":"#f3f4f4"},{"saturation":-84},{"lightness":59},{"visibility":"on"}]},{"featureType":"landscape","elementType":"labels","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"off"}]},{"featureType":"road","elementType":"geometry","stylers":[{"hue":"#ffffff"},{"saturation":-100},{"lightness":100},{"visibility":"on"}]},{"featureType":"road","elementType":"labels","stylers":[{"hue":"#bbbbbb"},{"saturation":-100},{"lightness":26},{"visibility":"on"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"hue":"#ffcc00"},{"saturation":100},{"lightness":-35},{"visibility":"simplified"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"hue":"#ffcc00"},{"saturation":100},{"lightness":-22},{"visibility":"on"}]},{"featureType":"poi.school","elementType":"all","stylers":[{"hue":"#d7e4e4"},{"saturation":-60},{"lightness":23},{"visibility":"on"}]}];
+
+ // Create a new StyledMapType object, passing it the array of styles,
+  // as well as the name to be displayed on the map type control.
+  var styledMap = new google.maps.StyledMapType(styleArray,
+    {name: "Styled Map"});
+
+  // Create a map object, and include the MapTypeId to add
+  // to the map type control.
   var mapOptions = {
     zoom: 12,
     center: myLatlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeControlOptions: {
+      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+    }
   };
 
-var map = new google.maps.Map(document.getElementById('map'), mapOptions);
-var icon = "{% static 'images/parking.png' %}";
+
+  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+var icon = "{% static 'images/icon.png' %}";
+
+map.mapTypes.set('map_style', styledMap);
+  map.setMapTypeId('map_style');
 //var data = 'http://data.vancouver.ca/download/kml/motorcycle_parking.kmz';
 
 {% for m in markers %}
@@ -39,8 +56,8 @@ google.maps.event.addListener(marker, 'click', function() {
   	'<p>{{m.rate}}<br>'+
   	'{{m.credit_card}}<br>'+
   	'{{m.location}}<br>'+
-  	'{{m.intersection}}<br></p>'+
-  	'<img src="{% static 'images/buildings.jpg' %}">')
+  	'{{m.intersection}}'+
+  	'<br></p><img src="{% static 'images/buildings.jpg' %}">')
   marker.info.open(map, this);
 });
 
@@ -85,7 +102,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		  </td>
 		  </tr>
 		</table>
-		
 	</body>
-	
 </html>
