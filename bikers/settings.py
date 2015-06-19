@@ -29,6 +29,10 @@ ACCOUNT_USERNAME_REQUIRED = False
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_REDIRECT_URL = '/'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
 SOCIALACCOUNT_PROVIDERS = { 
 	'google': { 
 		'SCOPE': ['profile', 'email'],
