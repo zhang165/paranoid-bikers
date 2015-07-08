@@ -117,6 +117,10 @@ DATABASES = {
     }
 
 
+# Handler for Django-Excel
+FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
+                        "django_excel.TemporaryExcelFileUploadHandler")
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
