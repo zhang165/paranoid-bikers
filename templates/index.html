@@ -104,8 +104,7 @@ google.maps.event.addListener(marker, 'click', function() {
   	'{{m.credit_card}}<br>'+
   	'{{m.location}}<br>'+
   	'{{m.intersection}}'+
-  	//'<br></p><img src="{% static 'images/buildings.jpg' %}">')
-  '<br></p><img src="https://maps.googleapis.com/maps/api/streetview?size=350x180&location={{m.lon}},{{m.lat}}&heading=151.78&pitch=-0.76">')
+  '<br></p><a href=http://maps.google.com/maps?q=&layer=c&cbll={{m.lon}},{{m.lat}} target="_blank"><img src="https://maps.googleapis.com/maps/api/streetview?size=350x180&location={{m.lon}},{{m.lat}}&heading=151.78&pitch=-0.76"></a>')
   marker.info.open(map, this);
   calcRoute();
 
