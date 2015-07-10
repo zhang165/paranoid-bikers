@@ -16,3 +16,16 @@ class Placemark(models.Model):
 	lon = models.DecimalField(max_digits=20, decimal_places=14)
 	def __str__(self):
 		return self.placemark_id
+
+class BikeTheft(models.Model):
+	district = models.IntegerField(default=0)
+	Weekday = models.IntegerField(default=0)
+	Month = models.CharField(max_length=300, default="")
+	Year = models.IntegerField(default=0)
+	Block = models.CharField(max_length=300, default="")
+	BlockCleaned= models.CharField(max_length=300, default="")
+	AddressConsolidated = models.CharField(max_length=300, default="")
+	lat = models.DecimalField(max_digits=20, decimal_places=14)
+	lon = models.DecimalField(max_digits=20, decimal_places=14)
+	def __str__(self):
+		return self.Block
