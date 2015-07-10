@@ -41,7 +41,13 @@ SOCIALACCOUNT_PROVIDERS = {
 	'google': { 
 		'SCOPE': ['profile', 'email'],
           'AUTH_PARAMS': { 'access_type': 'online' } 
-	}
+	},
+    'facebook': {
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+            'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+            'METHOD': 'oauth2',
+            'VERIFIED_EMAIL': False,
+            'VERSION': 'v2.3'}
 }
 SITE_ID = 3
 
@@ -63,6 +69,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
 	'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -120,6 +127,10 @@ DATABASES = {
         }
     }
 
+
+# Handler for Django-Excel
+FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
+                        "django_excel.TemporaryExcelFileUploadHandler")
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

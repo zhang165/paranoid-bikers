@@ -11,11 +11,15 @@ body {
 
 .content{
 font: 15px arial, sans-serif;
-color: #FFFFFF;
-font-size: 12px;
+	color: #48281c;
 }
 
 select{
+	font: 15px arial, sans-serif;
+	color: #48281c;
+}
+
+button{
 	font: 15px arial, sans-serif;
 	color: #48281c;
 }
@@ -43,3 +47,4 @@ a:hover{
 	color: #5b5b5b;
 	text-decoration: none;
 	font-weight: bold;
+
