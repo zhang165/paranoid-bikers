@@ -42,7 +42,6 @@ SOCIALACCOUNT_PROVIDERS = {
         'SCOPE': ['email', 'public_profile', 'user_friends'],
             'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
             'METHOD': 'oauth2',
-            'LOCALE_FUNC': 'path.to.callable',
             'VERIFIED_EMAIL': False,
             'VERSION': 'v2.3'}
 }
@@ -66,6 +65,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
 	'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
 )
 
 MIDDLEWARE_CLASSES = (
