@@ -51,14 +51,19 @@ var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: tru
 
 
 var heatmapData = [
-{% for m in markers %}
-  new google.maps.LatLng({{m.lon}}, {{m.lat}}),
+{% for c in crimes %}
+  new google.maps.LatLng({{c.lat}}, {{c.lon}}),
+
 {% endfor %}
 ];
 
 heatmap = new google.maps.visualization.HeatmapLayer({
-  data: heatmapData
+  data: heatmapData,
+  "radius": 20,
+  "opacity": 1,
+  "maxIntensity": 8
 });
+
 
 heatmap.setMap(map);
 

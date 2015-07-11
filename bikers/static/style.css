@@ -1,10 +1,10 @@
 html, body, #map {
         height: 480px;
-	width: 100%;
+		width: 100%;
         margin: 0px;
-        padding: 0px
+        padding: 0px;
+}
 
-      }
 body {
 	background-color: #c8c8c8;
 }      
