@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import Placemark, Crime
 
 # Register your models here.
@@ -12,3 +13,4 @@ class CrimeAdmin(admin.ModelAdmin):
 	list_display = ('description','lat', 'lon')
 
 admin.site.register(Crime, CrimeAdmin)
+

@@ -165,7 +165,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
 			<a href="{% url 'account_login' %}">Sign In</a><br>
 			<a href="{% url 'account_signup' %}">Sign Up</a><br>
 			<a href="{% provider_login_url "google" %}">Sign in with Google</a><br>
-			<a href="{% provider_login_url "facebook" method="oauth2" %}">Sign in with Facebook</a>
+			<a href="{% provider_login_url "facebook" method="oauth2" %}">Sign in with Facebook</a><br>
+      <a href="{% provider_login_url "twitter" %}">Sign in with Twitter</a><br>
 		{% endif %}
 		{% endblock %}
 		</div>

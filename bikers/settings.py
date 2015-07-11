@@ -27,6 +27,10 @@ AUTHENTICATION_BACKENDS = (
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
+                        "django_excel.TemporaryExcelFileUploadHandler")
+						
 LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -42,7 +46,6 @@ SOCIALACCOUNT_PROVIDERS = {
         'SCOPE': ['email', 'public_profile', 'user_friends'],
             'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
             'METHOD': 'oauth2',
-            'LOCALE_FUNC': 'path.to.callable',
             'VERIFIED_EMAIL': False,
             'VERSION': 'v2.3'}
 }
@@ -66,6 +69,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
 	'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.twitter',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -123,6 +127,10 @@ DATABASES = {
         }
     }
 
+
+# Handler for Django-Excel
+FILE_UPLOAD_HANDLERS = ("django_excel.ExcelMemoryFileUploadHandler",
+                        "django_excel.TemporaryExcelFileUploadHandler")
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
