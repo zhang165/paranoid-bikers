@@ -1,4 +1,5 @@
 import os
+from decimal import *
 
 if __name__ == '__main__':
 	os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bikers.settings')
@@ -7,31 +8,29 @@ from parkingApp.models import Crime
 from parkingApp.models import Placemark
 from parkingApp.models import LowCrimePlacemark
 
-RADIUS = 7
+DIST = Decimal(0.0005)
 
 markers = Placemark.objects.values('name', 'lat', 'lon', 'placemark_id', 'rate', 'credit_card', 'location', 'intersection', 'time', 'link')
 crimes = Crime.objects.values('description', 'address', 'lat', 'lon')
 
+#for testing: count = 0
 for m in markers:
 
 	for c in crimes:
-
 		create = True
 		#for testing
-		'''
-		print((str(m['lat'])[:RADIUS]))
-		print(str(c['lon'])[:RADIUS])
-		print((str(m['lat'])[:RADIUS] == str(c['lon'])[:RADIUS]))
+		#print((c['lon'] - DIST <= m['lat'] <= c['lon'] + DIST) and (c['lat'] - DIST <= m['lon'] <= c['lat'] + DIST))
 
-		print((str(m['lon'])[:RADIUS]))
-		print((str(c['lat'])[:RADIUS]))
-		print((str(m['lon'])[:RADIUS] == str(c['lat'])[:RADIUS]))
-		'''
-
-		if ((str(m['lat'])[:RADIUS] == str(c['lon'])[:RADIUS]) and (str(m['lon'])[:RADIUS] == str(c['lat'])[:RADIUS])):
+		if ((c['lon'] - DIST <= m['lat'] <= c['lon'] + DIST) and (c['lat'] - DIST <= m['lon'] <= c['lat'] + DIST)):
 			create = False
 			break
 
+		#old algorithm
+		'''
+		if ((str(m['lat'])[:RADIUS] == str(c['lon'])[:RADIUS]) and (str(m['lon'])[:RADIUS] == str(c['lat'])[:RADIUS])):
+			create = False
+			break
+		'''
 	if (create == True):
 		LowCrimePlacemark.objects.get_or_create(placemark_id = m['placemark_id'], 
     	name = m['name'], 
@@ -43,7 +42,6 @@ for m in markers:
     	link = m['link'],
     	lat = m['lat'], 
     	lon = m['lon'])		
-
-	
+		
 
 
