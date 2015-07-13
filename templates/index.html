@@ -221,10 +221,9 @@ google.maps.event.addListener(marker, 'click', function() {
 });
 lowcrimes.push(marker);
 
+{% endfor %}
 toggleHeatmap();
 hideMarkers();
-
-{% endfor %}
   }
 
 google.maps.event.addDomListener(window, 'load', initialize);
