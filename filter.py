@@ -8,7 +8,7 @@ from parkingApp.models import Crime
 from parkingApp.models import Placemark
 from parkingApp.models import LowCrimePlacemark
 
-DIST = Decimal(0.0005)
+DIST = Decimal(0.001)
 
 markers = Placemark.objects.values('name', 'lat', 'lon', 'placemark_id', 'rate', 'credit_card', 'location', 'intersection', 'time', 'link')
 crimes = Crime.objects.values('description', 'address', 'lat', 'lon')
