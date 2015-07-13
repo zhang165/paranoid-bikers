@@ -7,4 +7,4 @@ urlpatterns = [
 	url(r'^$', 'parkingApp.views.index', name='index'),
     url(r'^admin/', include(admin.site.urls)),
 	url(r'^accounts/', include('allauth.urls')),
-	] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) # change for production!
+]
