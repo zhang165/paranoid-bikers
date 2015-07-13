@@ -36,5 +36,6 @@ for i in range(1, sheet.nrows):
     	address = (sheet.cell(i,11).value), 
     	lat = sheet.cell(i,12).value,
     	lon = sheet.cell(i,13).value)
+		#print('Parsed line: '+ str(i))
 		
 print('Finished parsing')

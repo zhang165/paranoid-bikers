@@ -1,0 +1,49 @@
+import os
+
+if __name__ == '__main__':
+	os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bikers.settings')
+
+from parkingApp.models import Crime
+from parkingApp.models import Placemark
+from parkingApp.models import LowCrimePlacemark
+
+RADIUS = 7
+
+markers = Placemark.objects.values('name', 'lat', 'lon', 'placemark_id', 'rate', 'credit_card', 'location', 'intersection', 'time', 'link')
+crimes = Crime.objects.values('description', 'address', 'lat', 'lon')
+
+for m in markers:
+
+	for c in crimes:
+
+		create = True
+		#for testing
+		'''
+		print((str(m['lat'])[:RADIUS]))
+		print(str(c['lon'])[:RADIUS])
+		print((str(m['lat'])[:RADIUS] == str(c['lon'])[:RADIUS]))
+
+		print((str(m['lon'])[:RADIUS]))
+		print((str(c['lat'])[:RADIUS]))
+		print((str(m['lon'])[:RADIUS] == str(c['lat'])[:RADIUS]))
+		'''
+
+		if ((str(m['lat'])[:RADIUS] == str(c['lon'])[:RADIUS]) and (str(m['lon'])[:RADIUS] == str(c['lat'])[:RADIUS])):
+			create = False
+			break
+
+	if (create == True):
+		LowCrimePlacemark.objects.get_or_create(placemark_id = m['placemark_id'], 
+    	name = m['name'], 
+    	rate = m['rate'], 
+    	credit_card = m['credit_card'],
+    	location = m['location'],
+    	intersection = m['intersection'],
+    	time = m['time'],
+    	link = m['link'],
+    	lat = m['lat'], 
+    	lon = m['lon'])		
+
+	
+
+
