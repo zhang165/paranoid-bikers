@@ -8,8 +8,10 @@ from parkingApp.models import Crime
 from parkingApp.models import Placemark
 from parkingApp.models import LowCrimePlacemark
 
-DIST = Decimal(0.001)
+#paranoid threshold in meters
+RADIUS = 100
 
+dist = Decimal(RADIUS*0.000009044289)
 markers = Placemark.objects.values('name', 'lat', 'lon', 'placemark_id', 'rate', 'credit_card', 'location', 'intersection', 'time', 'link')
 crimes = Crime.objects.values('description', 'address', 'lat', 'lon')
 
@@ -21,7 +23,7 @@ for m in markers:
 		#for testing
 		#print((c['lon'] - DIST <= m['lat'] <= c['lon'] + DIST) and (c['lat'] - DIST <= m['lon'] <= c['lat'] + DIST))
 
-		if ((c['lon'] - DIST <= m['lat'] <= c['lon'] + DIST) and (c['lat'] - DIST <= m['lon'] <= c['lat'] + DIST)):
+		if ((c['lon'] - dist <= m['lat'] <= c['lon'] + dist) and (c['lat'] - dist <= m['lon'] <= c['lat'] + dist)):
 			create = False
 			break
 
