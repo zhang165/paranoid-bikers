@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from parkingApp.models import Placemark, BikeTheft
+=======
+from django.shortcuts import render
+from parkingApp.models import Placemark, Crime, LowCrimePlacemark
+>>>>>>> b29a229c6c500aecb1d02238d9ff00bcd0eff499
 from django.views.decorators.http import require_http_methods
 from django.http import HttpResponse
 
@@ -16,6 +21,7 @@ import sys
 # Create your views here.
 def index(request):
 	markers = Placemark.objects.values('name', 'lat', 'lon', 'placemark_id', 'rate', 'credit_card', 'location', 'intersection', 'time', 'link')
+<<<<<<< HEAD
 	markers_dict = {'markers': markers}
 	return render(request, "index.html", markers_dict)
 
@@ -59,3 +65,9 @@ def import_data(request):
         context_instance=RequestContext(request))
 
 
+=======
+	crimes = Crime.objects.values('description', 'address', 'lat', 'lon')
+	lowcrimes = LowCrimePlacemark.objects.values('name', 'lat', 'lon', 'placemark_id', 'rate', 'credit_card', 'location', 'intersection', 'time', 'link')
+
+	return render(request, "index.html", {'markers': markers, 'crimes': crimes, 'lowcrimes' : lowcrimes})
+>>>>>>> b29a229c6c500aecb1d02238d9ff00bcd0eff499
