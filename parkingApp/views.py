@@ -19,7 +19,6 @@ import sys
 # Create your views here.
 def index(request):
 	markers = Placemark.objects.values('name', 'lat', 'lon', 'placemark_id', 'rate', 'credit_card', 'location', 'intersection', 'time', 'link')
-
 	crimes = Crime.objects.values('description', 'address', 'lat', 'lon')
 	lowcrimes = LowCrimePlacemark.objects.values('name', 'lat', 'lon', 'placemark_id', 'rate', 'credit_card', 'location', 'intersection', 'time', 'link')
 

@@ -47,7 +47,9 @@ function toggleMarkers() {
     lowcrimes[i].setVisible(false);
     }
       directionsDisplay.setMap(null);
+      if(me_marker != null){
       me_marker.setVisible(false);
+    }
       isVisible = false;
     
     }else{
@@ -58,7 +60,10 @@ function toggleMarkers() {
       lowcrimes[i].setVisible(true);
     }
       directionsDisplay.setMap(map);
+       if(me_marker != null){
       me_marker.setVisible(true);
+    }
+     
       isVisible = true;
     }
 }
