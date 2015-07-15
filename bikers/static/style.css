@@ -7,10 +7,12 @@ html, body, #map {
 
 body {
 	background-color: #c8c8c8;
+    font: 15px arial, sans-serif;
+    color: #48281c;
 }      
 
 .content{
-font: 15px arial, sans-serif;
+    font: 15px arial, sans-serif;
 	color: #48281c;
 }
 
