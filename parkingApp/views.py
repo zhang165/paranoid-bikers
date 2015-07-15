@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
+from django.template import RequestContext
 from parkingApp.models import Placemark, BikeTheft
 from django.views.decorators.http import require_http_methods
 from django.http import HttpResponse
@@ -9,7 +10,7 @@ import django_excel as excel
 
 import pyexcel.ext.xls
 import pyexcel.ext.xlsx
-import pyexcel.ext.ods3
+#import pyexcel.ext.ods3
 import sys
 
 # Create your views here.
@@ -21,8 +22,7 @@ def index(request):
 # Creating the View for IMPORTING bike theft data
 
 data = [
-	[1, 2, 4],
-	[4, 5, 6]
+	[1, 2, 3, 4, 5, 6, 7, 8, 9]
 ]
 
 class UploadFileForm(forms.Form):
@@ -33,16 +33,15 @@ def import_data(request):
     if request.method == "POST":
         form = UploadFileForm(request.POST, request.FILES)
         def choice_func(row):
-            q = Question.objects.filter(slug=row[0])[0]
+            q = BikeTheft.objects.filter(BLock=row[0])[0]
             row[0] = q
             return row
         if form.is_valid():
             request.FILES['file'].save_book_to_database(
-                models=[Question, Choice],
+                models=[BikeTheft],
                 initializers=[None, choice_func],
                 mapdicts=[
-                    ['question_text', 'pub_date', 'slug'],
-                    ['question', 'choice_text', 'votes']
+                    ['district', 'Weekday', 'Month', 'Year', 'Block', 'BlockCleaned', 'AddressConsolidated', 'lat', 'lon']
                  ]
                 )
             return HttpResponse("OK", status=200)
