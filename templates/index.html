@@ -234,10 +234,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 	<body>
 		<table height="100%" width="100%" border="0">
 		<tr>
-		<td align="left" valign="center" width="75%">
+
+		<td align="left" valign="center" width="70%">
 		<img src="{% static 'images/banner.png' %}">
     </td>
-      <td align="right" valign="center" width="13%">
+      <td align="right" valign="center" width="10%">
+
     <div id="share-buttons">
         <a href="http://www.facebook.com/sharer.php?u=http://paranoidbikers.herokuapp.com" target="_blank">
             <img src="https://simplesharebuttons.com/images/somacro/facebook.png" alt="Facebook" />
@@ -249,9 +251,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
             <img src="https://simplesharebuttons.com/images/somacro/twitter.png" alt="Twitter" />
         </a>
     </div>
+  </td>
     <div id="twttr"><a href="https://twitter.com/share" class="twitter-share-button" data-text="I found a great parking spot at: {{m.location}} "data-via="cpsc310test" data-count="none">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document, "script", "twitter-wjs");</script></div>
         </td>
-		<td align="center" valign="center" width="12%">
+
+		<td align="center" valign="center" width="15%">
+
 			<div class="login">
 		{% block body %}
 		{% if user.is_authenticated %}
@@ -278,7 +283,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
         <button onclick="toggleMarkers()">Toggle Parking Locations</button>
 
       </td>
-      <td valgin="top" align="right">
+      <td valign="top" align="right" colspan = "2">
         <button onclick="toggleHeatmap()">Toggle Crime Heatmap</button>
       </td>
 		  </tr>
