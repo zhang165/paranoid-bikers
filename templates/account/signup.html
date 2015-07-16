@@ -1,11 +1,14 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
+{% load staticfiles %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<a href="/"><div class="login_banner"></div></a>
+<div class="loginBanner">
+    <a href="/"><img src="{% static 'images/banner.png' %}"/></a>
+</div>
 <div class="inset2">
 	<h2>{% trans "Sign Up" %}</h2>
 

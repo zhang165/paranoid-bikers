@@ -1,18 +1,20 @@
 {% extends "account/base.html" %}
-{% load staticfiles %}
 
 {% load i18n %}
 {% load account %}
+{% load staticfiles %}
 {% load url from future %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 {% block content %}
   {% load socialaccount %}
-  <a href="/"><div class="login_banner"></div></a>
+  <div class="loginBanner">
+    <a href="/"><img src="{% static 'images/banner.png' %}"/></a>
+  </div>
   <div id="logo_wrapper">
-    <a href="{% provider_login_url "google" %}"><div class="google"></div></a>
-    <a href="{% provider_login_url "facebook" method="oauth2" %}"><div class="fb"></div></a>
-    <a href="{% provider_login_url "twitter" %}"><div class="twitter"></div></a>
+    <a href="{% provider_login_url "google" %}"><img src="{% static 'images/google_login.png' %}" class=imageFormat /></a>
+    <a href="{% provider_login_url "facebook" method="oauth2" %}"><img src="{% static 'images/fb_login.png' %}" class=imageFormat /></a>
+    <a href="{% provider_login_url "twitter" %}"><img src="{% static 'images/twitter_login.png' %}" class=imageFormat /></a>
   </div>
   <div class="inset">
     <div class="header">Or sign in directly</div>
